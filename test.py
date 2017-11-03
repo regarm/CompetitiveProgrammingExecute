@@ -30,6 +30,7 @@ class Environment(object):
 	file = None
 	platform = None
 	last_runnable_view = None
+	last_input_view = None
 
 	@staticmethod
 	def populate():
@@ -50,6 +51,10 @@ class Environment(object):
 	def set_last_runnable_view(_last_runnable_view):
 		Environment.last_runnable_view = _last_runnable_view
 		Environment.populate()
+
+	@staticmethod
+	def set_last_input_view(_last_input_view):
+		Environment.last_input_view = _last_input_view
 		
 class OutputFileEditCommand(sublime_plugin.TextCommand):
 	def run(self, edit, **args):
@@ -104,7 +109,7 @@ class Executor(object):
                         stderr=subprocess.STDOUT,
                         universal_newlines=True
                         )
-		output,errors = run.communicate(input_view.substr(sublime.Region(0, input_view.size())))
+		output,errors = run.communicate(Environment.last_input_view.substr(sublime.Region(0, input_view.size())))
 		run.wait();
 		output_view.run_command("output_file_edit", {"append" : run.args + "\n\n"});
 		output_view.run_command("output_file_edit", {"append" : "------------------------------------------\n"});
@@ -115,7 +120,13 @@ class Executor(object):
 
 class CompileAndRunCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
+		input_view = Environment.last_input_view
+		print(input_view.name())
+		print(input_view.substr(sublime.Region(0, input_view.size())))
 		output_view = Utils.create_output_file()
+		if None == input_view:
+			output_view.run_command("output_file_edit", {"append" : "No input file selected (Move focus to an input file)"});
+			return None
 
 		if(Compiler.compile(output_view) != 0):
 		 return None
@@ -199,7 +210,7 @@ class PluginEventListener(sublime_plugin.EventListener):
 
 	def on_activated(self, view):
 		if sublime.active_window().active_group() == INPUT_VIEW_GROUP:
-			None
+			Environment.set_last_input_view(view)
 		elif sublime.active_window().active_group() == OUTPUT_VIEW_GROUP:
 			None
 		else :
