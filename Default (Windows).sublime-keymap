@@ -1,0 +1,5 @@
+[
+   // { "keys": ["ctrl+shift+n"], "command": "compile_and_run" },
+   // { "keys": ["ctrl+o"], "command": "open_input_output_pane" },
+   { "keys": ["escape"], "command": "close_input_output_pane" }
+]

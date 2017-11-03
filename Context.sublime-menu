@@ -1,0 +1,17 @@
+[
+	{
+	    "id" : "test-context-1",
+	    "caption" : "Compile and Run",
+	    "command" : "compile_and_run"
+	},
+	{
+		"id" : "test-context-1",
+		"caption" : "Open I/O pane",
+		"command" : "open_input_output_pane"
+	},
+	{
+		"id" : "test-context-2",
+		"caption" : "Close I/O pane",
+		"command" : "close_input_output_pane"
+	}
+]
