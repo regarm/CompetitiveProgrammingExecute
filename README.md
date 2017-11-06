@@ -1,4 +1,4 @@
-#Sublime as IDE for competitive coding
+Sublime as IDE for competitive coding
 
 #### Keyboard shortcuts
 Although you can access functionalities by right click on editor, here are the keymaps.
