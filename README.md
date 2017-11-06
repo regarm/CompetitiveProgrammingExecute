@@ -56,4 +56,8 @@ i.e. If your program file is ```/Users/regar/file.cpp```, then
  
  ## Bugs / Issues / Features requests
 
-Please file bugs / feature requests by filing an issue to the project or send an email to ```regarmanojkumar@gmail.com```    
+Please file bugs / feature requests by filing an issue to the project or send an email to ```regarmanojkumar@gmail.com``` 
+
+
+## Get involved  
+Fork, develop and make a merge request. 
