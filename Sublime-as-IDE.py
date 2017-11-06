@@ -10,7 +10,7 @@ IO_PANE_LAYOUT = {"cols": [0.0, 0.5, 1.0], "rows": [0.0, 0.75, 0.75, 1.0],
 INPUT_VIEW_GROUP = 1
 OUTPUT_VIEW_GROUP = 2
 
-settings = sublime.load_settings("languages.sublime-settings")
+settings = sublime.load_settings("Languages.sublime-settings")
 
 
 class Environment(object):
@@ -114,8 +114,6 @@ class Executor(object):
                                universal_newlines=True
                                )
         output, errors = run.communicate(Environment.last_input_view.substr(sublime.Region(0, input_view.size())))
-        print(output)
-        print(errors)
         run.wait();
         output_view.run_command("output_file_edit", {"append": run.args + "\n\n"});
         output_view.run_command("output_file_edit", {"append": "------------------------------------------\n"});

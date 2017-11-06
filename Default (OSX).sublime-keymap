@@ -1,5 +1,5 @@
 [
-   { "keys": ["command+option+b"], "command": "compile_and_run" },
-   { "keys": ["command+shift+o"], "command": "open_input_output_pane" },
-   { "keys": ["command+shift+escape"], "command": "close_input_output_pane" }
+   { "keys": ["ctrl+space+b"], "command": "compile_and_run" },
+   { "keys": ["ctrl+space+o"], "command": "open_input_output_pane" },
+   { "keys": ["ctrl+space+escape"], "command": "close_input_output_pane" }
 ]
