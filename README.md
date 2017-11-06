@@ -5,7 +5,7 @@ Sublime as IDE for competitive coding
  *  Separate pane for input and output in bottom
  *  Multiple input files for multiple test cases 
  *  Run just by keyboard shortcut
- *  Multiple languages (Default : C++, Java, Python)
+ *  Multiple languages (Default : C, C++, Java, Python)
  *  Add your own language
 
 
