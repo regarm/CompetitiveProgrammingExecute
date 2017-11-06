@@ -12,7 +12,7 @@ Sublime as IDE for competitive coding
 ## Installation  
 ### Manual
 
-1. Download the [latest release](https://github.com/regarmanojkumar/pkg/releases/latest), extract and rename the directory to `package name`.
+1. Download the [latest release](https://github.com/regarmanojkumar/CompetitiveProgrammingExecute/releases/latest), extract and rename the directory to `package name`.
 2. Move the directory inside your Sublime `/Packages` directory. *(Preferences > Browse packages...)*
 
 ## Keyboard shortcuts
