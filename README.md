@@ -41,6 +41,10 @@ Here is the example of default ```Languages.sublime-settings```.
 
 ~~~  
 {
+	"lang-c" : {
+		"compile_cmd" : "gcc \"${code_file}\" -o \"${code_file_path}/${code_file_base_name}\"",
+		"execute_cmd" : "\"${code_file_path}/${code_file_base_name}\""
+	},
 	"lang-cpp" : {
 		"compile_cmd" : "g++ \"${code_file}\" -o \"${code_file_path}/${code_file_base_name}\"",
 		"execute_cmd" : "\"${code_file_path}/${code_file_base_name}\""
