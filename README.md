@@ -1,6 +1,20 @@
 Sublime as IDE for competitive coding  
 ===============
 
+## Features
+ *  Separate pane for input and output in bottom
+ *  Multiple input files for multiple test cases 
+ *  Run just by keyboard shortcut
+ *  Multiple languages (Default : C++, Java, Python)
+ *  Add your own language
+
+
+## Installation  
+### Manual
+
+1. Download the [latest release](https://github.com/regarmanojkumar/pkg/releases/latest), extract and rename the directory to `package name`.
+2. Move the directory inside your Sublime `/Packages` directory. *(Preferences > Browse packages...)*
+
 ## Keyboard shortcuts
 Although, you can access these functionalities by right click on editor, here are the keymaps.
 
