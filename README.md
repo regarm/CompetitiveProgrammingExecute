@@ -1,3 +1,4 @@
+![Edge](https://i.imgur.com/bXeP6xg.png)
 Sublime as IDE for competitive coding  
 ===============
 
