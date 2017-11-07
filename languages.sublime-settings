@@ -1,11 +1,12 @@
 {
 	"lang-c" : {
 		"compile_cmd" : "gcc \"${code_file}\" -o \"${code_file_path}/${code_file_base_name}\"",
-		"execute_cmd" : "\"${code_file_path}/${code_file_base_name}\""
+		"execute_cmd" : "\"${code_file_path}/${code_file_base_name}\"",
 	},
 	"lang-cpp" : {
 		"compile_cmd" : "g++ \"${code_file}\" -o \"${code_file_path}/${code_file_base_name}\"",
-		"execute_cmd" : "\"${code_file_path}/${code_file_base_name}\""
+		"execute_cmd" : "\"${code_file_path}/${code_file_base_name}\"",
+		"timeout" : 3
 	},
 	"lang-java" : {
 		"compile_cmd" : "javac \"${code_file}\"",

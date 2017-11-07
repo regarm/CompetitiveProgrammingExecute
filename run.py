@@ -12,6 +12,8 @@ OUTPUT_VIEW_GROUP = 2
 
 settings = sublime.load_settings("Languages.sublime-settings")
 
+DEFAULT_TIMEOUT = 3
+
 
 class Environment(object):
     """ Environment for target file.
@@ -113,12 +115,26 @@ class Executor(object):
                                stderr=subprocess.STDOUT,
                                universal_newlines=True
                                )
-        output, errors = run.communicate(Environment.last_input_view.substr(sublime.Region(0, input_view.size())))
-        run.wait();
-        output_view.run_command("output_file_edit", {"append": run.args + "\n\n"});
-        output_view.run_command("output_file_edit", {"append": "------------------------------------------\n"});
-        output_view.run_command("output_file_edit", {"append": output + "\n"});
-        output_view.run_command("output_file_edit", {"append": "------------------------------------------\n"});
+       	output_view.run_command("output_file_edit", {"append": run.args + "\n\n"});
+       	output = None
+       	timeout = DEFAULT_TIMEOUT
+       	if "timeout" in lang_settings:
+       		timeout = lang_settings["timeout"]
+
+        try:
+        	output, errors = run.communicate(Environment.last_input_view.substr(sublime.Region(0, input_view.size())), timeout=timeout)
+        except subprocess.TimeoutExpired:
+        	output_view.run_command("output_file_edit", {"append": "Timeout expired of " + str(timeout) + " seconds\n"});
+        	output_view.run_command("output_file_edit", {"append": "Timeout is added to stop running the process indefinitely, It can be changed in Languages.sublime-settings\n"});
+        	run.kill()
+        	output, errors = run.communicate()
+        finally:
+        	if output != None:
+	        	output_view.run_command("output_file_edit", {"append": "------------------------------------------\n"});
+		        output_view.run_command("output_file_edit", {"append": output + "\n"});
+		        output_view.run_command("output_file_edit", {"append": "------------------------------------------\n"});
+
+
         output_view.run_command("output_file_edit",
                                 {"append": "Execution finished with exit code : " + str(run.returncode)})
 

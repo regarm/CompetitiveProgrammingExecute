@@ -47,7 +47,8 @@ Here is the example of default ```Languages.sublime-settings```.
 	},
 	"lang-cpp" : {
 		"compile_cmd" : "g++ \"${code_file}\" -o \"${code_file_path}/${code_file_base_name}\"",
-		"execute_cmd" : "\"${code_file_path}/${code_file_base_name}\""
+		"execute_cmd" : "\"${code_file_path}/${code_file_base_name}\"",
+		"timeout" : 3
 	},
 	"lang-java" : {
 		"compile_cmd" : "javac \"${code_file}\"",
@@ -58,6 +59,8 @@ Here is the example of default ```Languages.sublime-settings```.
 	}
 }
 ~~~
+
+```timeout``` here specifies how long process should be allowed to run. Default is 3 seconds.
 
 The key ```lang-extension``` is used to determine which language command should be used.  
 Following variables are available :  
