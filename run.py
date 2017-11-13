@@ -3,6 +3,7 @@ import sublime_plugin
 import json
 import subprocess
 from string import Template
+import shlex
 
 DEFAULT_LAYOUT = {"cols": [0.0, 1.0], "rows": [0.0, 1.0], "cells": [[0, 0, 1, 1]]}
 IO_PANE_LAYOUT = {"cols": [0.0, 0.5, 1.0], "rows": [0.0, 0.75, 0.75, 1.0],
@@ -79,15 +80,15 @@ class Compiler(object):
                                                       code_file_path=Environment.file_path, code_file=Environment.file)
 
         output_view.run_command("output_file_edit", {"append": "Compiling ...\n"});
-        compile = subprocess.Popen(compile_command,
-                                   shell=True,
+        compile = subprocess.Popen(shlex.split(compile_command),
+                                   # shell=True,
                                    stdin=subprocess.PIPE,
                                    stdout=subprocess.PIPE,
                                    stderr=subprocess.STDOUT,
                                    universal_newlines=True
                                    )
-        compile.wait();
-        output_view.run_command("output_file_edit", {"append": compile.args + "\n\n"});
+        print(type(compile.args))
+        output_view.run_command("output_file_edit", {"append": ''.join(compile.args) + "\n\n"});
         output, errors = compile.communicate()
         output_view.run_command("output_file_edit", {"append": "\n" + output + "\n\n"});
         output_view.run_command("output_file_edit",
@@ -108,14 +109,14 @@ class Executor(object):
                                                       code_file_path=Environment.file_path, code_file=Environment.file)
 
         output_view.run_command("output_file_edit", {"append": "Running ...\n"});
-        run = subprocess.Popen(execute_command,
-                               shell=True,
+        run = subprocess.Popen(shlex.split(execute_command),
+                               # shell=True,
                                stdin=subprocess.PIPE,
                                stdout=subprocess.PIPE,
                                stderr=subprocess.STDOUT,
                                universal_newlines=True
                                )
-       	output_view.run_command("output_file_edit", {"append": run.args + "\n\n"});
+       	output_view.run_command("output_file_edit", {"append": ''.join(run.args) + "\n\n"});
        	output = None
        	timeout = DEFAULT_TIMEOUT
        	if "timeout" in lang_settings:
